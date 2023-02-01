@@ -1,0 +1,130 @@
+<script>
+    let Produk = [[`Apel`, 10_000, 5], [`anggur`, 15_000, 7], [`jeruk`, 20_000, 9]]
+    let cart = []
+    let totalHarga = 0
+
+
+    while (true) {
+
+        let Hal_awal = +prompt(`Selamat datang, selamat berbelanja
+    1. Daftar Buah
+    2. Tambah Buah
+    3. menghapus Buah
+    4. membeli Buah
+    5. Exit`)
+        if (Hal_awal == 1) {
+            let list = `Daftar buah segar \n`
+            for (let i = 0; i < Produk.length; i++) {
+                list += `${i + 1}. ${Produk[i][0]}, Harga Rp.${Produk[i][1]}, Stok tersedia ${Produk[i][2]}\n`
+            }
+            alert(list)
+
+        } else if (Hal_awal == 2) {
+            let newData = []
+            let name
+            while (true) {
+                let namaIn = prompt(`Masukkan jenis buah!`)
+                if (!namaIn) {
+                    alert(`tolong masukkan inputan yg benar`)
+                } else {
+                    newData.push(namaIn)
+                    console.log(namaIn)
+                    name = namaIn
+                    break
+                }
+            }
+            while (true) {
+                let harga = +prompt(`Masukkan harga buah!`)
+                if (!harga) {
+                    alert(`tolong masukkan inputan yg benar`)
+                } else {
+                    console.log(harga)
+                    newData.push(harga)
+                    break
+                }
+            }
+            while (true) {
+                let qty = +prompt(`Masukkan jumlah buah!`)
+                if (!qty) {
+                    alert(`tolong masukkan inputan yg benar`)
+                } else {
+                    newData.push(qty)
+                    break
+                }
+            }
+            Produk.push(newData)
+            console.log(newData)
+            alert(`Data buah ${name} sudah di masukkan ke database`)
+
+        }
+        else if (Hal_awal == 3) {
+            let list = (`Daftar buah segar \n`)
+            for (let i = 0; i < Produk.length; i++) {
+                list += `${i + 1}. ${Produk[i][0]}, Harga Rp. ${Produk[i][1]}, Stok tersedia ${Produk[i][2]}. \n`
+            }
+            list += `Buah mana yang ingin di hapus`
+            alert(list)
+
+            let index = +prompt(list)
+            Produk.splice(index - 1, 1)
+
+            alert(`Data buah ke ${index} sudah di hapus dari keranjang`)
+
+        } else if (Hal_awal == 4) {
+            while (true) {
+                let list = `Daftar buah segar \n`
+                for (let i = 0; i < Produk.length; i++) {
+                    list += `${i + 1}. ${Produk[i][0]}, Harga Rp. ${Produk[i][1]}, Stok tersedia ${Produk[i][2]}. \n `
+                }
+                list += `Buah nomor berapa yang akan di beli?`
+                let index = +prompt(list)
+                console.log(index)
+                alert(index)
+
+                while (true) {
+                    let qty = +prompt(`Berapa ${Produk[index - 1][0]} yg ingin dibeli? * Stok = ${Produk[index - 1][2]}`)
+
+                    if (qty > Produk[index - 1][2]) {
+                        alert(`Quantity melebihi stok, mohon input ulang sesuai stok yg ada`)
+                    } else if (qty <= Produk[index - 1][2]) {
+                        cart.push([Produk[index - 1][0], Produk[index - 1][1], qty])
+
+                        totalHarga += Produk[index - 1][1] * qty
+
+                        alert(`Buah ${Produk[index - 1][0]} Sudah di masukkan keranjang`)
+                        break
+                    }
+                }
+                let konfirmasi = confirm(`Apakah anda mau membeli buah yg lain?`)
+                if (!konfirmasi) break
+
+            }
+            while (true) {
+                let keranjang = `Dartar keranjang anda \n`
+                for (let i = 0; i < cart.length; i++) {
+                    keranjang += `${i - 1}. Rp. ${cart[i][1]} x ${cart[i][2]} = Rp. ${(cart[i][1] * cart[i][2]).toLocaleString()} \n`
+                    keranjang += `Total belanja anda Rp. ${totalHarga.toLocaleString()}`
+                }
+
+                let nominal = +prompt(`  Total belanja anda Rp. ${totalHarga.toLocaleString()}, Toling isi sesuai jumlah belanja`)
+                if (nominal < totalHarga) {
+                    alert(`Mohon maaf uang anda kurang, tolong masukkan sesuai tital belanja`)
+                } else if (nominal > totalHarga) {
+                    alert(`Terima kasih, kembalian anda Rp.${(nominal - totalHarga).toLocaleString()}`)
+                    break
+                } else if (nominal == totalHarga) {
+                    alert(`Terimakasih selamat berbelanja kembali`)
+                    break
+                }
+            }
+            // let konfirmasi = confirm(`Apakah anda ingin menambahkan buah lagi?`)
+            // if (konfirmasi == false) break // format lain if (!konfirmasi)
+        } else if (Hal_awal == 5) {
+            alert(5)
+            break
+        }
+        else {
+            alert(`maaf pilihan anda tidak tersedia`)
+        }
+    }
+</script>

@@ -1,0 +1,9 @@
+cara membuat repository
+klik repositori
+klik new
+repository name (nama folder)
+
+
+menghubugkan vsCode dengan repository baru di github
+1. git init
+2. git remote (alamat url)

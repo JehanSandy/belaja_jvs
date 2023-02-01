@@ -1,0 +1,43 @@
+<script>
+    let apel = 10_000,
+        anggur = 15_000,
+        jeruk = 20_000,    
+    
+        stokapel = 5
+        stokanggur = 7
+        stokjeruk = 9
+
+    let qtyApel = +prompt(`🍎 Apel = Rp${apel. toLocaleString()}/buah. Berapa jumlah apel yang akan di beli?`)
+        if (qtyApel > stokapel){
+        alert(`stok apel ${stokapel} pesanan anda ${qtyApel} melebihi, akan di isi sesuai jumlah stok yaitu ${stokapel}`)
+        qtyApel = stokapel // ini comman
+        // qtyApel = stokapel // ini comman
+         } 
+    let qtyAnggur = +prompt(`🍇 Anggur = Rp${anggur.toLocaleString()}/buah. Berpa jumlah anggur yang akan di beli?`)
+         if (qtyAnggur > stokanggur){
+        alert(`stok anggur ${stokanggur} pesanan anda ${qtyAnggur} melebihi, akan di isi sesuai jumlah stok yaitu ${stokanggur}`)
+        qtyAnggur = stokanggur
+         }
+    let qtyJeruk = +prompt(`🍊 Jeruk = Rp${jeruk.toLocaleString()}/buah. Berpa jumlah jeruk yang akan di beli?`)
+        if (qtyJeruk > stokjeruk){
+        alert(`stok anggur ${stokjeruk} pesanan anda ${qtyJeruk} melebihi, akan di isi sesuai jumlah stok yaitu ${stokjeruk}`)
+        qtyJeruk = stokjeruk
+         }
+    
+    let nominal = +prompt (`list belanja anda :
+    1. 🍎 Apel, Rp${apel.toLocaleString()} x ${qtyApel.toLocaleString()} = Rp${(apel*qtyApel).toLocaleString()}
+    2. 🍇 Anggur, Rp${anggur.toLocaleString()} x ${qtyAnggur.toLocaleString()} = Rp${(anggur*qtyAnggur).toLocaleString()}
+    3. 🍊 Jeruk, Rp${jeruk.toLocaleString()} x ${qtyJeruk.toLocaleString()} = Rp${(jeruk*qtyJeruk).toLocaleString()}
+    Total Belanja Buah = Rp${((apel*qtyApel)+(anggur*qtyAnggur)+(jeruk*qtyJeruk)).toLocaleString()}
+    `),
+        totalbelanja = (apel*qtyApel)+(anggur*qtyAnggur)+(jeruk*qtyJeruk)
+        
+         if (nominal < totalbelanja){
+            alert(`mohon maaf uang anda kurang`)
+         } else if (nominal > totalbelanja){
+            alert(`terimakasi uang kembalian and adalah ${nominal - totalbelanja}`)
+         } else {
+            alert(`terimakasih adalah`)
+         }
+         
+</script>

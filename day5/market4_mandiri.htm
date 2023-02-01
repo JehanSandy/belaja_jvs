@@ -1,0 +1,57 @@
+<script>
+    let Produk = [[`Apel`, 10_000, 5], [`anggur`, 15_000, 7], [`jeruk`, 20_000, 9]]
+    let cart = []
+
+    while (true) {
+        let menuUtama = +prompt(`Selamat datang dan selamat berbelanja.
+        1. Daftar Buah
+        2. Tambah Buah
+        3. menghapus Buah
+        4. membeli Buah
+        5. Exit`)
+
+        if (menuUtama == 1) {
+            list = `Daftar buah segar: \n`
+            for (let i = 0; i < Produk.length; i++) {
+                list += `${i + 1}. ${Produk[i][0]}, Harga Rp.${Produk[i][1].toLocaleString()}/Kg, Stok tersedia ${Produk[i][2]} \n`
+            }
+            alert(list)
+
+        } else if (menuUtama == 2) {
+            let nama = prompt(`Masukkan Nama Buah`)
+            let qty = +prompt(`masukkan Stok Buah`)
+            let harga = +prompt(`masukkan Harga Buah`)
+            console.log(nama, harga, qty)
+
+            Produk.push = ([nama, harga, qty])
+            alert(`Data ${nama} sudah tambahkan`)
+
+        } else if (menuUtama == 3) {
+
+        } else if (menuUtama == 4) {
+            while (true) { 
+                let list = `Daftar buah segar \n`
+                for (let i = 0; i < Produk.length; i++) {
+                    list += `${i + 1}. ${Produk[i][0]}, Harga Rp. ${Produk[i][1]}, Stok tersedia ${Produk[i][2]}. \n `
+                }
+                list += `Buah nomor berapa yang akan di beli?`
+                let index = +prompt(list)
+                console.log(index)
+                break
+
+                // let qty = +prompt(`Berapa banyak ${Produk[index-1]}, yg akan di beli`)
+                // if (qty)
+            }
+        } else if (menuUtama == 5) {
+            alert(`Terima kasih telah berbelanja`)
+        } else {
+            alert(`Maaf Pilihan Tidak tersedia`)
+        } break
+
+    }
+
+
+
+
+
+</script>

@@ -1,0 +1,48 @@
+<script>
+    let apel = 10_000,
+        anggur = 15_000,
+        jeruk = 20_000,
+
+        stokapel = 5
+        stokanggur = 7
+        stokjeruk = 9
+
+    let qtyApel = +prompt(`🍎 stok apel tersedia ${stokapel} Harga Apel = Rp${apel.toLocaleString()}/buah. Berapa jumlah apel yang akan di beli?`)
+    for (stokapel = stokapel ; stokapel < qtyApel;) {
+        alert(`stok apel ${stokapel} pesanan anda ${qtyApel} melebihi, tolong masukkan ulang sesuai stok`)
+        qtyApel = +prompt(`🍎 Stok apel tersedia ${stokapel} Harga Apel = Rp${apel.toLocaleString()}/buah. Berapa jumlah apel yang akan di beli?`)
+    }
+
+    let qtyAnggur = +prompt(`🍇Stok Anggur tersedia ${stokanggur} Harga Anggur = Rp${anggur.toLocaleString()}/buah. Berpa jumlah anggur yang akan di beli?`)
+    for (stokanggur = stokanggur ; stokanggur < qtyAnggur;) {
+        alert(`stok anggur ${stokanggur} pesanan anda ${qtyAnggur} melebihi, tolong masukkan ulang sesuai stok`)
+        qtyAnggur = +prompt (`🍇Stok Anggur tersedia ${stokanggur} Harga Anggur = Rp${anggur.toLocaleString()}/buah. Berpa jumlah anggur yang akan di beli?`)
+    }
+    let qtyJeruk = +prompt(`🍊 Stok jeruk ${stokjeruk} Harga jeruk = Rp${jeruk.toLocaleString()}/buah. Berpa jumlah jeruk yang akan di beli?`)
+    for (stokjeruk = stokjeruk ; stokjeruk < qtyJeruk;) {
+        alert(`stok Jeruk ${stokjeruk} pesanan anda ${qtyJeruk} melebihi, tolong masukkan ulang sesuai stok`)
+        qtyJeruk = +prompt(`🍊 Stok jeruk tersedia ${stokjeruk} Harga Anggur = Rp${jeruk.toLocaleString()}/buah. Berpa jumlah anggur yang akan di beli?`)
+    }
+
+    let nominal = +prompt(`list belanja anda :
+    1. 🍎 Apel, Rp${apel.toLocaleString()} x ${qtyApel.toLocaleString()} = Rp${(apel * qtyApel).toLocaleString()}
+    2. 🍇 Anggur, Rp${anggur.toLocaleString()} x ${qtyAnggur.toLocaleString()} = Rp${(anggur * qtyAnggur).toLocaleString()}
+    3. 🍊 Jeruk, Rp${jeruk.toLocaleString()} x ${qtyJeruk.toLocaleString()} = Rp${(jeruk * qtyJeruk).toLocaleString()}
+    Total Belanja Buah = Rp${((apel * qtyApel) + (anggur * qtyAnggur) + (jeruk * qtyJeruk)).toLocaleString()}
+    `),
+        totalbelanja = (apel * qtyApel) + (anggur * qtyAnggur) + (jeruk * qtyJeruk)
+
+    for (nominal = nominal ; nominal < totalbelanja;) {
+        alert(`mohon maaf uang anda kurang, mohon di isi sesuai total belanja`)
+        nominal = +prompt(`list belanja anda :
+        1. 🍎 Apel, Rp${apel.toLocaleString()} x ${qtyApel.toLocaleString()} = Rp${(apel * qtyApel).toLocaleString()}
+        2. 🍇 Anggur, Rp${anggur.toLocaleString()} x ${qtyAnggur.toLocaleString()} = Rp${(anggur * qtyAnggur).toLocaleString()}
+        3. 🍊 Jeruk, Rp${jeruk.toLocaleString()} x ${qtyJeruk.toLocaleString()} = Rp${(jeruk * qtyJeruk).toLocaleString()}
+        Total Belanja Buah = Rp${((apel * qtyApel) + (anggur * qtyAnggur) + (jeruk * qtyJeruk)).toLocaleString()}`)
+        
+    } if (nominal > totalbelanja) {
+        alert(`terimakasi uang kembalian anda adalah ${nominal - totalbelanja}`)
+    } else {
+        alert(`terimakasih`)
+    }
+</script>
