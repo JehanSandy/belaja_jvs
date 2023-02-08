@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market 2.1</title>
+    <style>
+        table th,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        #table_input input,
+        select {
+            margin: 5px;
+        }
+
+        table {
+            width: 40%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <center>
+        <h1>MARKET 2.1</h1>
+    </center>
+    <fieldset>
+        <legend>Filter</legend>
+        <label for="filter_nama">Nama : </label>
+        <input type="text" id="filter_nama" placeholder="Nama" oninput="filterNama(this.value)">
+        <br><br>
+        <label for="label_harga">Harga : </label>
+        <input type="number" id="harga1" placeholder="Harga Min" oninput="filterHarga()">
+        <label> - </label>
+        <input type="number" id="harga2" placeholder="Harga Max" oninput="filterHarga()">
+        <br><br>
+        <label for="kategori">Kategori : </label>
+        <select id="kategori" onchange="filterKate(this.value)">
+            <option value="All">All</option>
+            <option value="Fast Food">Fast Food</option>
+            <option value="Electronik">Electronic</option>
+            <option value="Cloth">Cloth</option>
+            <option value="Fruit">Fruit</option>
+        </select>
+        <br><br>
+        <button onclick="onRiset()">Reset</button>
+    </fieldset>
+    <fieldset>
+        <legend>Input Data</legend>
+        <table id="table_input">
+            <tr>
+                <td>
+                    <input type="text" id="nama" placeholder="Nama">
+                </td>
+                <td>
+                    <input type="number" id="harga" placeholder="Harga">
+                </td>
+                <td>
+                    <select id="kat">
+                        <option value="">all</option>
+                        <option value="Fast Food">Fast Food</option>
+                        <option value="Electronic">Electronic</option>
+                        <option value="Cloth">Cloth</option>
+                        <option value="Fruit">Fruit</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" id="stok" placeholder="Stok">
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <button onclick="inputData()">Input</button>
+    </fieldset>
+    <fieldset>
+        <legend>Table Data</legend>
+        <table id="table_data">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Kategori</th>
+                    <th>Nama</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </fieldset>
+</body>
+
+</html>
+<script src="./Database.js"></script>
+<script>
+
+    let showData = (data) => {
+        let tbody = document.getElementById(`table_data`).tBodies[0]
+        // console.log(tbody)
+
+        let res = ` `
+        data.forEach(item => {
+            res += `
+            <tr>
+                <td>${item.id}</td>
+                <td>${item.kategori}</td>
+                <td>${item.nama}</td>
+                <td>${item.harga}</td>
+                <td>${item.stok}</td>
+            </tr>`
+        })
+        tbody.innerHTML = res
+        
+    }
+    showData(produk)
+    // console.log(produk)
+
+    let inputData = () => {
+        let nama = document.getElementById(`nama`).value
+        let harga = +document.getElementById(`harga`).value
+        let kategori = document.getElementById("kat").value
+        let stok = +document.getElementById(`stok`).value
+        let id = Date.now()
+
+        produk.push(new Produk(id, kategori, nama, harga, stok))
+        showData()
+    }
+    let filterNama = (value) => {
+        let filterByNama = produk.filter(item => {
+            return item.nama.toLowerCase().includes(value.toLowerCase())
+        })
+        console.log(filterByNama)
+        showData(filterByNama)
+    }
+    let filterHarga = () => {
+        let harga1 = document.getElementById(`harga1`).value
+        let harga2 = document.getElementById(`harga2`).value
+        if (harga1 && !harga2) {
+            let filMinHarga = produk.filter(item => {
+                return item.harga >= harga1
+            })
+            showData(filMinHarga)
+            console.log(filMinHarga)
+        } else if (!harga1 && harga2) {
+            let filMaxHarga = produk.filter(item => {
+                return item.harga <= harga2
+            })
+            showData(filMaxHarga)
+        } else if (!harga1 && !harga2) {
+            showData(produk)
+        } else {
+            let filMaxMin = produk.filter(item => {
+                return item.harga >= harga1 && item.harga <= harga2
+            })
+            showData(filMaxMin)
+        }
+    }
+    let filterKate = () => {
+        let kates = document.getElementById(`kategori`).value
+        let filByKT = produk.filter(item => {
+            return item.kategori == kates
+        })
+        showData(filByKT)
+        console.log(filByKT)
+    }
+    let onRiset = () => {
+        showData(produk)
+    }
+    let FilAll = () => {
+        
+    }
+</script>

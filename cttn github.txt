@@ -7,3 +7,13 @@ repository name (nama folder)
 menghubugkan vsCode dengan repository baru di github
 1. git init
 2. git remote (alamat url)
+3. git add .
+4. git commit m "upload pertama"
+5. git push origin master
+
+git config --global user.name "My Name"
+git config --global user.email "myemail@example.com"
+git config --list (cek username kita)
+
+git init dan git remote untuk menghubungkan ke repository baru
+untuk mengupdate repository lama menggunakan git add . commit dan push

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="Name">Nama</label>&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;
+    <input type="text" id="nama">
+    <br>
+    <br>
+    <label for="harga">Harga</label>&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;
+    <input type="number" name="" id="harga">
+    <br>
+    <br>
+    <label for="">Condition</label>&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;
+    <input type="radio" name="Cond" value="Second">Second
+    <input type="radio" name="Cond" value="New">New
+    <br>
+    <br>
+    <label for="">Werehouse</label>&emsp13;&emsp13;&emsp13;&emsp13;
+    <select id="were">
+        <option value="Jakarta">JKT</option>
+        <option value="Bandung">BDG</option>
+        <option value="Surabaya">SBY</option>
+        <option value="Madiun">MDN</option>
+    </select>
+    <br>
+    <br>
+    <label for="">Courier</label>&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;&emsp13;
+    <input type="checkbox" name="cour" value="JNT">JNT
+    <input type="checkbox" name="cour" value="JNE">JNE
+    <input type="checkbox" name="cour" value="Ninja Expres">Ninja Expres
+    <br>
+    <br>
+    <button onclick="showResul()">Click Here</button>
+    <p>Result</p>
+
+    
+
+</body>
+
+</html>
+<script>
+    const showResul = () => {
+        let nama = document.getElementById(`nama`).value
+        let harga = document.getElementById(`harga`).value
+        let Condition
+        document.getElementsByName(`Cond`).forEach(item => {
+            if (item.checked == true) {
+                Condition = item.value
+            }
+        })
+        let were = document.getElementById(`were`).value
+        let cour = ` `
+        // console.log(document.getElementsByName(`cour`))
+        document.getElementsByName(`cour`).forEach(item =>{
+            if (item.checked==true)
+            cour += item.value+ ` `
+        })
+        console.log(nama, harga, Condition, were, cour)
+
+        let newDiv = document.createElement(`div`)
+        newDiv.innerHTML =`
+        1. Nama = ${nama} <br>
+        2. Harga = Rp${harga.toLocaleString()} <br>
+        3. kondisi = ${Condition} <br>
+        4. Werehouse = ${were}<br>
+        5. Courier = ${cour}<br>
+        `
+        document.getElementsByTagName(`p`)[0].after(newDiv)
+    }
+</script>

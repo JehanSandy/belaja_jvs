@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM leason</title>
+</head>
+
+
+<body>
+   <!-- commen -->
+   <div id="hello" name="greet">
+    <!-- nodes commen -->
+    Hello
+   </div>
+   <table>
+    <tr>
+        <td></td>
+    </tr>
+   </table>
+   <div class="text">Wold</div>
+   <div class="text Apple">Aplle</div>
+   <div id="test"></div>
+</body>
+<script>
+    // how to akses HTML DOM
+    // top nodes
+    let html = document.documentElement
+    console.log(html)
+
+    let body = document.body
+    console.log(body)
+
+    let head = document.head
+    console.log(head)
+
+    // node vs elemen
+    // semua yg di html termasuk comman dan teks masuk e dalam nodes
+    // elemen ada penutup dan pembuka <elemen></elemen>
+    // sehingga tidak semua nodes adalah elemen
+
+    // childNodes
+    let bodyNodes = document.body.childNodes //hasil data/ return berupa array
+    console.log(bodyNodes)
+    console.log(bodyNodes[7])
+    console.log(document.body.firstChild)
+    console.log(document.body.lastChild)
+    console.log(document.body.firstChild.nextSibling)
+    console.log(document.body.lastChild.previousSibling)
+
+    // memanggil element
+    let bodyElement = document.body.children // cara memanggil elemen di dalam body menggunakan children
+    console.log(bodyElement)
+    console.log(document.body.firstElementChild)
+    console.log(document.body.lastElementChild)
+    console.log(document.body.firstElementChild.nextElementSibling)
+    console.log(document.body.lastElementChild.previousElementSibling)
+
+    // searcing : getElement *, querySelector *
+    // get elemen by id
+    let div = document.getElementById(`hello`) //return single elemen
+    console.log(div)
+
+    // get collection using
+    console.log(document.getElementsByTagName(`div`)) // returnt collection elemen
+    console.log(document.getElementsByName(`div`)[1]) // returnt collection indeks
+    console.log(document.getElementsByClassName(`Apple`)) 
+    console.log(document.getElementsByName(`greet`))
+    // returnnya berupa array
+
+    // Creating elemen 
+    /** 
+     1. document.createElement(tag), membuat elemen node baru dengan tag
+     2. document.createTextNode(text), membuat teks node dengan teks
+    **/
+
+    let div2 = document.createElement(`div`) //membuat <div></div>
+    div2.innerHTML = <b>new elemen</b> //<div><b>new elemen</b></div>
+    document.getElementsByClassName(`text`)[0].prepend(div2)
+    //berfore , arfter (sebelum dan sesudah div/ elemen), prepend, append (di salam div paling atas atau paling bawah)
+
+    // akses teks di dalam elemen => innerHTML atau textConten
+    document.getElementById(`test`).innerHTML = `ini di edit pakai inner HTML`
+    document.getElementsByClassName(`text`)[0].textContent = `ini di edit pakai textConten`
+
+
+
+</script>
+
+</html> 

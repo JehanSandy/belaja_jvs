@@ -135,3 +135,11 @@ let countdown = (counter) => {
     }
 }
 countdown(3)
+const DaftarBarang = () => {
+    let list = `Daftar barang toserba \n`
+    // produk.forEach((item, index) => {
+    //     list += `${index + 1}. ${item.nama}, kategori ${item.kategori} harga Rp.${item.harga.toLocaleString()}, stok tersedia ${item.stok}, kadar gula ${item.kadarGula}\n`
+    // })
+    return list
+}
+console.log(DaftarBarang())
